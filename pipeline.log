@@ -620,3 +620,15 @@
 2026-03-16 19:45:21,989 — INFO — Watermark saved successfully!
 2026-03-16 19:45:21,989 — INFO — Pipeline finished successfully!
 2026-03-16 19:45:21,989 — INFO — ==================================================
+2026-03-17 10:35:51,506 — INFO — ==================================================
+2026-03-17 10:35:51,507 — INFO — Media metadata extraction started
+2026-03-17 10:35:51,507 — INFO — Fetching metadata for gskhw4w4lm (Facebook)
+2026-03-17 10:35:52,179 — INFO — ✅ Metadata fetched for gskhw4w4lm
+2026-03-17 10:35:52,183 — INFO — 💾 Metadata saved to data/raw/metadata/gskhw4w4lm/date=2026-03-17/metadata.json
+2026-03-17 10:35:52,183 — INFO — 📊 Stats — Plays: 16692 | Play rate: 0.15500191277735273
+2026-03-17 10:35:52,183 — INFO — Fetching metadata for v08dlrgr7v (YouTube)
+2026-03-17 10:35:52,469 — INFO — ✅ Metadata fetched for v08dlrgr7v
+2026-03-17 10:35:52,471 — INFO — 💾 Metadata saved to data/raw/metadata/v08dlrgr7v/date=2026-03-17/metadata.json
+2026-03-17 10:35:52,471 — INFO — 📊 Stats — Plays: 43813 | Play rate: 0.43505731945691795
+2026-03-17 10:35:52,471 — INFO — Media metadata extraction finished!
+2026-03-17 10:35:52,471 — INFO — ==================================================

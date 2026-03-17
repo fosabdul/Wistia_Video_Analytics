@@ -94,6 +94,20 @@ for media_id in MEDIA_IDS:
     events = get_visitor_events(media_id, last_run)
     log.info(f"Total records fetched for {media_id}: {len(events)}")
 
+    # Save raw data locally
+    if events:
+        date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        output_dir = f"data/raw/{media_id}/date={date_str}"
+        os.makedirs(output_dir, exist_ok=True)
+        output_file = f"{output_dir}/events.json"
+
+        with open(output_file, "w") as f:
+            json.dump(events, f, indent=2)
+
+        log.info(f"Raw data saved to {output_file}")
+    else:
+        log.info(f"No new records to save for {media_id}")
+
 save_last_run()
 log.info("Pipeline finished successfully!")
 log.info("=" * 50)

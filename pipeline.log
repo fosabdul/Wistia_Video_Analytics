@@ -632,3 +632,43 @@
 2026-03-17 10:35:52,471 — INFO — 📊 Stats — Plays: 43813 | Play rate: 0.43505731945691795
 2026-03-17 10:35:52,471 — INFO — Media metadata extraction finished!
 2026-03-17 10:35:52,471 — INFO — ==================================================
+2026-03-17 18:09:04,489 — INFO — ==================================================
+2026-03-17 18:09:04,490 — INFO — 🚀 Pipeline started at 2026-03-17 23:09:04.489998+00:00
+2026-03-17 18:09:04,490 — INFO — ==================================================
+2026-03-17 18:09:04,490 — INFO — Running src/ingestion/media_metadata.py...
+2026-03-17 18:12:08,343 — INFO — ==================================================
+2026-03-17 18:12:08,343 — INFO — 🚀 Pipeline started at 2026-03-17 23:12:08.343426+00:00
+2026-03-17 18:12:08,343 — INFO — ==================================================
+2026-03-17 18:12:08,343 — INFO — Running src/ingestion/media_metadata.py...
+2026-03-17 18:12:08,519 — INFO — ==================================================
+2026-03-17 18:12:08,519 — INFO — Media metadata extraction started
+2026-03-17 18:12:08,519 — INFO — Fetching metadata for gskhw4w4lm (Facebook)
+2026-03-17 18:12:08,816 — INFO — ✅ Metadata fetched for gskhw4w4lm
+2026-03-17 18:12:08,819 — INFO — 💾 Metadata saved to data/raw/metadata/gskhw4w4lm/date=2026-03-17/metadata.json
+2026-03-17 18:12:08,819 — INFO — 📊 Stats — Plays: 16692 | Play rate: 0.15500191277735273
+2026-03-17 18:12:08,819 — INFO — Fetching metadata for v08dlrgr7v (YouTube)
+2026-03-17 18:12:09,067 — INFO — ✅ Metadata fetched for v08dlrgr7v
+2026-03-17 18:12:09,070 — INFO — 💾 Metadata saved to data/raw/metadata/v08dlrgr7v/date=2026-03-17/metadata.json
+2026-03-17 18:12:09,070 — INFO — 📊 Stats — Plays: 43813 | Play rate: 0.43505731945691795
+2026-03-17 18:12:09,070 — INFO — Media metadata extraction finished!
+2026-03-17 18:12:09,070 — INFO — ==================================================
+2026-03-17 18:12:09,097 — INFO — ✅ src/ingestion/media_metadata.py completed successfully!
+2026-03-17 18:12:09,097 — INFO — Running src/ingestion/wistia_ingest.py...
+2026-03-17 18:12:09,173 — INFO — ==================================================
+2026-03-17 18:12:09,173 — INFO — Pipeline started
+2026-03-17 18:12:09,174 — INFO — Incremental run — fetching records since 2026-03-17T00:45:21.987880+00:00
+2026-03-17 18:12:09,174 — INFO — Fetching events for gskhw4w4lm
+2026-03-17 18:12:09,401 — INFO — Total records fetched for gskhw4w4lm: 0
+2026-03-17 18:12:09,401 — INFO — No new records to save for gskhw4w4lm
+2026-03-17 18:12:09,401 — INFO — Fetching events for v08dlrgr7v
+2026-03-17 18:12:09,650 — INFO — Total records fetched for v08dlrgr7v: 0
+2026-03-17 18:12:09,650 — INFO — No new records to save for v08dlrgr7v
+2026-03-17 18:12:09,652 — INFO — Watermark saved successfully!
+2026-03-17 18:12:09,653 — INFO — Pipeline finished successfully!
+2026-03-17 18:12:09,653 — INFO — ==================================================
+2026-03-17 18:12:09,681 — INFO — ✅ src/ingestion/wistia_ingest.py completed successfully!
+2026-03-17 18:12:09,681 — INFO — Running src/transformation/spark_transform.py...
+2026-03-17 18:12:20,126 — INFO — ✅ src/transformation/spark_transform.py completed successfully!
+2026-03-17 18:12:20,126 — INFO — ==================================================
+2026-03-17 18:12:20,126 — INFO — ✅ Pipeline finished successfully at 2026-03-17 23:12:20.126843+00:00
+2026-03-17 18:12:20,126 — INFO — ==================================================

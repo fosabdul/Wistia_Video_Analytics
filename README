@@ -1,0 +1,147 @@
+Wistia Video Analytics Pipeline
+================================
+
+Overview
+--------
+This project is an end-to-end data engineering pipeline built to collect,
+process, and analyze video engagement data from Wistia across Facebook and
+YouTube channels. It was designed to simulate a real-world production data
+pipeline with full responsibility for architecture, ingestion, transformation,
+scheduling, testing, and documentation.
+
+The pipeline runs automatically every day, pulls fresh data from the Wistia
+Stats API, transforms it using PySpark, and stores the results in a structured
+data model ready for analysis.
+
+
+What This Pipeline Does
+-----------------------
+- Connects to the Wistia Stats API and pulls video engagement data
+- Handles pagination to fetch all available records (60,000+ rows)
+- Uses incremental ingestion so each daily run only pulls new data
+- Transforms raw JSON into three clean structured tables using PySpark
+- Runs automatically every day using a scheduled cron job
+- Logs every run with timestamps, record counts, and error handling
+- Tests are automatically run on every GitHub push using GitHub Actions
+
+
+Tech Stack
+----------
+Language:        Python 3.13
+Transformation:  PySpark 4.1.1
+Version Control: Git and GitHub
+CI/CD:           GitHub Actions
+Scheduling:      Cron (macOS)
+Testing:         pytest
+
+
+Project Structure
+-----------------
+The project is organized into clear, separate layers following
+standard data engineering best practices:
+
+  src/ingestion/
+    wistia_ingest.py       Fetches visitor-level events from the API
+    media_metadata.py      Fetches media-level stats and metadata
+
+  src/transformation/
+    spark_transform.py     PySpark jobs to clean and structure raw data
+
+  src/pipeline.py          Master script that runs the full pipeline in order
+
+  tests/
+    test_ingestion.py      Unit tests for ingestion logic
+
+  .github/workflows/
+    ci.yml                 GitHub Actions workflow for automated testing
+
+
+Data Model
+----------
+The pipeline produces three structured tables:
+
+  dim_media
+    Stores information about each video
+    Fields: media_id, channel (Facebook or YouTube)
+
+  dim_visitor
+    Stores information about each unique viewer
+    Fields: visitor_id, ip_address, country
+
+  fact_media_engagement
+    Stores engagement events linking visitors to videos
+    Fields: media_id, visitor_id, date, watched_percent
+
+
+Pipeline Statistics
+-------------------
+  Total records processed:   59,861
+  Unique visitors identified: 56,516
+  Media IDs tracked:          2
+  Daily schedule:             8:00 AM every day
+  Incremental logic:          Yes, watermark-based
+
+
+How To Set Up and Run
+---------------------
+Step 1 - Clone the repository
+
+  git clone https://github.com/fosabdul/Wistia_Video_Analytics.git
+  cd Wistia_Video_Analytics
+
+Step 2 - Install dependencies
+
+  pip3 install -r requirements.txt
+
+Step 3 - Set up your environment variables
+  Create a file called .env in the root folder and add:
+
+  WISTIA_API_TOKEN=hidden
+
+Step 4 - Run the full pipeline
+
+  python3 src/pipeline.py
+
+Step 5 - Run the tests
+
+  python3 -m pytest tests/ -v
+
+
+CI/CD Pipeline
+--------------
+Every time code is pushed to the main branch, GitHub Actions automatically:
+
+  1. Sets up a clean Python environment
+  2. Installs all dependencies
+  3. Runs all unit tests
+  4. Reports pass or fail status
+
+This ensures the codebase is always in a working state.
+
+
+Design Decisions
+----------------
+Incremental Ingestion
+  Rather than pulling all 60,000 records on every run, the pipeline saves
+  a watermark timestamp after each successful run. The next run only fetches
+  records created after that timestamp, making daily runs fast and efficient.
+
+Separation of Concerns
+  Ingestion, transformation, and orchestration are kept in separate scripts.
+  This makes each component easier to test, debug, and maintain independently.
+
+Error Handling
+  Every API call includes retry logic with exponential backoff. All errors
+  are logged with timestamps so failures can be diagnosed quickly.
+
+Raw Data Preservation
+  Raw JSON responses are saved to disk before transformation. This means
+  if the transformation logic needs to change, data can be reprocessed
+  without hitting the API again.
+
+
+Author
+------
+Abdulfatai Sado
+Data Engineering Project
+GitHub: github.com/fosabdul

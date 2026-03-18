@@ -32,6 +32,24 @@ def run_script(script_path):
         log.error(result.stderr)
         return False
 
+def sync_to_s3():
+    """
+    Syncs all local data to S3 after every successful run.
+    """
+    log.info("Syncing data to S3...")
+    result = subprocess.run([
+        "aws", "s3", "sync",
+        "data/",
+        "s3://wistia-video-analytics-fosabdul/",
+        "--exclude", "*.pyc"
+    ], capture_output=True, text=True)
+
+    if result.returncode == 0:
+        log.info("✅ Data synced to S3 successfully!")
+    else:
+        log.error("❌ S3 sync failed!")
+        log.error(result.stderr)
+
 # Run the full pipeline
 log.info("=" * 50)
 log.info(f"🚀 Pipeline started at {datetime.now(timezone.utc)}")
@@ -51,6 +69,9 @@ if not run_script("src/ingestion/wistia_ingest.py"):
 if not run_script("src/transformation/spark_transform.py"):
     log.error("Pipeline stopped at transformation!")
     exit(1)
+
+# Step 4 — Sync all data to AWS S3
+sync_to_s3()
 
 log.info("=" * 50)
 log.info(f"✅ Pipeline finished successfully at {datetime.now(timezone.utc)}")

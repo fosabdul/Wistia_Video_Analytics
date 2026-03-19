@@ -1,5 +1,6 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, lit, to_date
+from pyspark.sql.functions import col, lit, to_date, row_number, desc
+from pyspark.sql.window import Window
 import logging
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s — %(levelname)s — %(message)s")
@@ -58,13 +59,15 @@ dim_visitor.show(5)
 dim_visitor.write.mode("overwrite").parquet("data/processed/dim_visitor")
 log.info("dim_visitor saved!")
 
-fact = events.select(
+fact_raw = events.select(
     col("media_id"),
     col("visitor_key").alias("visitor_id"),
     to_date(col("received_at")).alias("date"),
-    col("percent_viewed").alias("watched_percent"),
-    lit(None).cast("double").alias("total_watch_time")
-).dropDuplicates()
+    col("percent_viewed").alias("watched_percent")
+)
+
+window = Window.partitionBy("media_id", "visitor_id", "date").orderBy(desc("watched_percent"))
+fact = fact_raw.withColumn("row_num", row_number().over(window)).filter(col("row_num") == 1).drop("row_num")
 
 log.info(f"fact_media_engagement rows: {fact.count()}")
 fact.show(5)

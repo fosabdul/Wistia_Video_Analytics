@@ -70,7 +70,13 @@ if not run_script("src/transformation/spark_transform.py"):
     log.error("Pipeline stopped at transformation!")
     exit(1)
 
-# Step 4 — Sync all data to AWS S3
+# Step 4 — Run data quality checks
+if not run_script("src/quality_checks.py"):
+    log.error("Pipeline stopped — data quality checks failed!")
+    exit(1)
+
+# Step 5 — Sync all data to AWS S3
+
 sync_to_s3()
 
 log.info("=" * 50)

@@ -1148,3 +1148,231 @@
 2026-03-19 17:13:16,569 — INFO — ==================================================
 2026-03-19 17:13:16,569 — INFO — ✅ Pipeline finished successfully at 2026-03-19 22:13:16.569142+00:00
 2026-03-19 17:13:16,569 — INFO — ==================================================
+2026-03-19 17:19:06,860 — INFO — ==================================================
+2026-03-19 17:19:06,860 — INFO — 🚀 Pipeline started at 2026-03-19 22:19:06.860413+00:00
+2026-03-19 17:19:06,860 — INFO — ==================================================
+2026-03-19 17:19:06,860 — INFO — Running src/ingestion/media_metadata.py...
+2026-03-19 17:19:07,017 — INFO — ==================================================
+2026-03-19 17:19:07,017 — INFO — Media metadata extraction started
+2026-03-19 17:19:07,017 — INFO — Fetching metadata for gskhw4w4lm (Facebook)
+2026-03-19 17:19:07,266 — INFO — ✅ Stats fetched for gskhw4w4lm
+2026-03-19 17:19:07,414 — INFO — ✅ Details fetched for gskhw4w4lm
+2026-03-19 17:19:07,418 — INFO — 💾 Metadata saved to data/raw/metadata/gskhw4w4lm/date=2026-03-19/metadata.json
+2026-03-19 17:19:07,418 — INFO — Title: Chris Face VSL The Gap Method Youtube  Paid Ads | Plays: 16692
+2026-03-19 17:19:07,418 — INFO — Fetching metadata for v08dlrgr7v (YouTube)
+2026-03-19 17:19:07,606 — INFO — ✅ Stats fetched for v08dlrgr7v
+2026-03-19 17:19:07,820 — INFO — ✅ Details fetched for v08dlrgr7v
+2026-03-19 17:19:07,821 — INFO — 💾 Metadata saved to data/raw/metadata/v08dlrgr7v/date=2026-03-19/metadata.json
+2026-03-19 17:19:07,821 — INFO — Title: Chris Face VSL The Gap Method Facebook Paid Ads | Plays: 43813
+2026-03-19 17:19:07,821 — INFO — Media metadata extraction finished!
+2026-03-19 17:19:07,821 — INFO — ==================================================
+2026-03-19 17:19:07,838 — INFO — ✅ src/ingestion/media_metadata.py completed successfully!
+2026-03-19 17:19:07,838 — INFO — Running src/ingestion/wistia_ingest.py...
+2026-03-19 17:19:07,942 — INFO — ==================================================
+2026-03-19 17:19:07,942 — INFO — Pipeline started
+2026-03-19 17:19:07,942 — INFO — Incremental run — fetching records since 2026-03-19T22:13:03.792603+00:00
+2026-03-19 17:19:07,942 — INFO — Fetching events for gskhw4w4lm
+2026-03-19 17:19:08,115 — INFO — Total records fetched for gskhw4w4lm: 0
+2026-03-19 17:19:08,115 — INFO — No new records to save for gskhw4w4lm
+2026-03-19 17:19:08,115 — INFO — Fetching events for v08dlrgr7v
+2026-03-19 17:19:08,275 — INFO — Total records fetched for v08dlrgr7v: 0
+2026-03-19 17:19:08,275 — INFO — No new records to save for v08dlrgr7v
+2026-03-19 17:19:08,275 — INFO — Watermark saved successfully!
+2026-03-19 17:19:08,275 — INFO — Pipeline finished successfully!
+2026-03-19 17:19:08,275 — INFO — ==================================================
+2026-03-19 17:19:08,298 — INFO — ✅ src/ingestion/wistia_ingest.py completed successfully!
+2026-03-19 17:19:08,299 — INFO — Running src/transformation/spark_transform.py...
+2026-03-19 17:19:28,524 — INFO — ✅ src/transformation/spark_transform.py completed successfully!
+2026-03-19 17:19:28,524 — INFO — Running src/quality_checks.py...
+2026-03-19 17:19:28,872 — INFO — ==================================================
+2026-03-19 17:19:28,872 — INFO — Running data quality checks...
+2026-03-19 17:19:28,952 — INFO — Running null checks...
+2026-03-19 17:19:28,953 — INFO — ✅ dim_media.media_id — no nulls
+2026-03-19 17:19:28,954 — INFO — ✅ dim_visitor.visitor_id — no nulls
+2026-03-19 17:19:28,955 — INFO — ✅ fact.media_id — no nulls
+2026-03-19 17:19:28,956 — INFO — ✅ fact.visitor_id — no nulls
+2026-03-19 17:19:28,957 — INFO — ✅ fact.date — no nulls
+2026-03-19 17:19:28,957 — INFO — Running uniqueness checks...
+2026-03-19 17:19:28,958 — INFO — ✅ dim_media.media_id — no duplicates
+2026-03-19 17:19:28,960 — INFO — ✅ dim_visitor.visitor_id — no duplicates
+2026-03-19 17:19:28,971 — INFO — ✅ fact composite key (media_id+visitor_id+date) — no duplicates
+2026-03-19 17:19:28,971 — INFO — Running schema checks...
+2026-03-19 17:19:28,971 — INFO — ✅ dim_media.media_id — column exists
+2026-03-19 17:19:28,971 — INFO — ✅ dim_media.channel — column exists
+2026-03-19 17:19:28,971 — INFO — ✅ dim_media.title — column exists
+2026-03-19 17:19:28,971 — INFO — ✅ dim_media.play_count — column exists
+2026-03-19 17:19:28,971 — INFO — ✅ dim_media.play_rate — column exists
+2026-03-19 17:19:28,971 — INFO — ✅ dim_visitor.visitor_id — column exists
+2026-03-19 17:19:28,971 — INFO — ✅ dim_visitor.ip_address — column exists
+2026-03-19 17:19:28,971 — INFO — ✅ dim_visitor.country — column exists
+2026-03-19 17:19:28,971 — INFO — ✅ fact.media_id — column exists
+2026-03-19 17:19:28,971 — INFO — ✅ fact.visitor_id — column exists
+2026-03-19 17:19:28,971 — INFO — ✅ fact.date — column exists
+2026-03-19 17:19:28,971 — INFO — ✅ fact.watched_percent — column exists
+2026-03-19 17:19:28,971 — INFO — Running row count checks...
+2026-03-19 17:19:28,971 — INFO — ✅ dim_media — 2 rows (expected 2)
+2026-03-19 17:19:28,971 — INFO — ✅ dim_visitor — 56,516 rows
+2026-03-19 17:19:28,971 — INFO — ✅ fact_media_engagement — 57,775 rows
+2026-03-19 17:19:28,971 — INFO — Running freshness check...
+2026-03-19 17:19:28,975 — INFO — ✅ Data freshness — latest record is 9 day(s) old
+2026-03-19 17:19:28,976 — INFO — ==================================================
+2026-03-19 17:19:28,976 — INFO — Quality check results: 24 passed · 0 failed
+2026-03-19 17:19:28,976 — INFO — ✅ All quality checks passed!
+2026-03-19 17:19:29,014 — INFO — ✅ src/quality_checks.py completed successfully!
+2026-03-19 17:19:29,014 — INFO — Syncing data to S3...
+2026-03-19 17:19:31,221 — INFO — ✅ Data synced to S3 successfully!
+2026-03-19 17:19:31,221 — INFO — ==================================================
+2026-03-19 17:19:31,221 — INFO — ✅ Pipeline finished successfully at 2026-03-19 22:19:31.221564+00:00
+2026-03-19 17:19:31,221 — INFO — ==================================================
+2026-03-20 08:04:59,242 — INFO — ==================================================
+2026-03-20 08:04:59,242 — INFO — 🚀 Pipeline started at 2026-03-20 13:04:59.242487+00:00
+2026-03-20 08:04:59,242 — INFO — ==================================================
+2026-03-20 08:04:59,242 — INFO — Running src/ingestion/media_metadata.py...
+2026-03-20 08:04:59,454 — INFO — ==================================================
+2026-03-20 08:04:59,454 — INFO — Media metadata extraction started
+2026-03-20 08:04:59,454 — INFO — Fetching metadata for gskhw4w4lm (Facebook)
+2026-03-20 08:04:59,779 — INFO — ✅ Stats fetched for gskhw4w4lm
+2026-03-20 08:04:59,987 — INFO — ✅ Details fetched for gskhw4w4lm
+2026-03-20 08:04:59,990 — INFO — 💾 Metadata saved to data/raw/metadata/gskhw4w4lm/date=2026-03-20/metadata.json
+2026-03-20 08:04:59,990 — INFO — Title: Chris Face VSL The Gap Method Youtube  Paid Ads | Plays: 16692
+2026-03-20 08:04:59,990 — INFO — Fetching metadata for v08dlrgr7v (YouTube)
+2026-03-20 08:05:00,168 — INFO — ✅ Stats fetched for v08dlrgr7v
+2026-03-20 08:05:00,307 — INFO — ✅ Details fetched for v08dlrgr7v
+2026-03-20 08:05:00,308 — INFO — 💾 Metadata saved to data/raw/metadata/v08dlrgr7v/date=2026-03-20/metadata.json
+2026-03-20 08:05:00,308 — INFO — Title: Chris Face VSL The Gap Method Facebook Paid Ads | Plays: 43813
+2026-03-20 08:05:00,308 — INFO — Media metadata extraction finished!
+2026-03-20 08:05:00,308 — INFO — ==================================================
+2026-03-20 08:05:00,322 — INFO — ✅ src/ingestion/media_metadata.py completed successfully!
+2026-03-20 08:05:00,322 — INFO — Running src/ingestion/wistia_ingest.py...
+2026-03-20 08:05:00,398 — INFO — ==================================================
+2026-03-20 08:05:00,398 — INFO — Pipeline started
+2026-03-20 08:05:00,398 — INFO — Incremental run — fetching records since 2026-03-19T22:19:08.275522+00:00
+2026-03-20 08:05:00,398 — INFO — Fetching events for gskhw4w4lm
+2026-03-20 08:05:00,632 — INFO — Total records fetched for gskhw4w4lm: 0
+2026-03-20 08:05:00,632 — INFO — No new records to save for gskhw4w4lm
+2026-03-20 08:05:00,632 — INFO — Fetching events for v08dlrgr7v
+2026-03-20 08:05:00,917 — INFO — Total records fetched for v08dlrgr7v: 0
+2026-03-20 08:05:00,917 — INFO — No new records to save for v08dlrgr7v
+2026-03-20 08:05:00,917 — INFO — Watermark saved successfully!
+2026-03-20 08:05:00,917 — INFO — Pipeline finished successfully!
+2026-03-20 08:05:00,917 — INFO — ==================================================
+2026-03-20 08:05:00,944 — INFO — ✅ src/ingestion/wistia_ingest.py completed successfully!
+2026-03-20 08:05:00,944 — INFO — Running src/transformation/spark_transform.py...
+2026-03-20 08:05:15,099 — INFO — ✅ src/transformation/spark_transform.py completed successfully!
+2026-03-20 08:05:15,100 — INFO — Running src/quality_checks.py...
+2026-03-20 08:05:15,565 — INFO — ==================================================
+2026-03-20 08:05:15,565 — INFO — Running data quality checks...
+2026-03-20 08:05:15,655 — INFO — Running null checks...
+2026-03-20 08:05:15,657 — INFO — ✅ dim_media.media_id — no nulls
+2026-03-20 08:05:15,658 — INFO — ✅ dim_visitor.visitor_id — no nulls
+2026-03-20 08:05:15,659 — INFO — ✅ fact.media_id — no nulls
+2026-03-20 08:05:15,661 — INFO — ✅ fact.visitor_id — no nulls
+2026-03-20 08:05:15,662 — INFO — ✅ fact.date — no nulls
+2026-03-20 08:05:15,662 — INFO — Running uniqueness checks...
+2026-03-20 08:05:15,663 — INFO — ✅ dim_media.media_id — no duplicates
+2026-03-20 08:05:15,665 — INFO — ✅ dim_visitor.visitor_id — no duplicates
+2026-03-20 08:05:15,678 — INFO — ✅ fact composite key (media_id+visitor_id+date) — no duplicates
+2026-03-20 08:05:15,678 — INFO — Running schema checks...
+2026-03-20 08:05:15,678 — INFO — ✅ dim_media.media_id — column exists
+2026-03-20 08:05:15,678 — INFO — ✅ dim_media.channel — column exists
+2026-03-20 08:05:15,678 — INFO — ✅ dim_media.title — column exists
+2026-03-20 08:05:15,678 — INFO — ✅ dim_media.play_count — column exists
+2026-03-20 08:05:15,678 — INFO — ✅ dim_media.play_rate — column exists
+2026-03-20 08:05:15,678 — INFO — ✅ dim_visitor.visitor_id — column exists
+2026-03-20 08:05:15,678 — INFO — ✅ dim_visitor.ip_address — column exists
+2026-03-20 08:05:15,678 — INFO — ✅ dim_visitor.country — column exists
+2026-03-20 08:05:15,678 — INFO — ✅ fact.media_id — column exists
+2026-03-20 08:05:15,678 — INFO — ✅ fact.visitor_id — column exists
+2026-03-20 08:05:15,678 — INFO — ✅ fact.date — column exists
+2026-03-20 08:05:15,678 — INFO — ✅ fact.watched_percent — column exists
+2026-03-20 08:05:15,678 — INFO — Running row count checks...
+2026-03-20 08:05:15,678 — INFO — ✅ dim_media — 2 rows (expected 2)
+2026-03-20 08:05:15,678 — INFO — ✅ dim_visitor — 56,516 rows
+2026-03-20 08:05:15,678 — INFO — ✅ fact_media_engagement — 57,775 rows
+2026-03-20 08:05:15,678 — INFO — Running freshness check...
+2026-03-20 08:05:15,682 — INFO — ✅ Data freshness — latest record is 10 day(s) old
+2026-03-20 08:05:15,682 — INFO — ==================================================
+2026-03-20 08:05:15,682 — INFO — Quality check results: 24 passed · 0 failed
+2026-03-20 08:05:15,682 — INFO — ✅ All quality checks passed!
+2026-03-20 08:05:15,722 — INFO — ✅ src/quality_checks.py completed successfully!
+2026-03-20 08:05:15,722 — INFO — Syncing data to S3...
+2026-03-20 08:05:17,577 — INFO — ✅ Data synced to S3 successfully!
+2026-03-20 08:05:17,577 — INFO — ==================================================
+2026-03-20 08:05:17,577 — INFO — ✅ Pipeline finished successfully at 2026-03-20 13:05:17.577599+00:00
+2026-03-20 08:05:17,577 — INFO — ==================================================
+2026-03-21 08:42:18,822 — INFO — ==================================================
+2026-03-21 08:42:18,822 — INFO — 🚀 Pipeline started at 2026-03-21 13:42:18.822506+00:00
+2026-03-21 08:42:18,823 — INFO — ==================================================
+2026-03-21 08:42:18,823 — INFO — Running src/ingestion/media_metadata.py...
+2026-03-21 08:42:19,185 — INFO — ==================================================
+2026-03-21 08:42:19,185 — INFO — Media metadata extraction started
+2026-03-21 08:42:19,185 — INFO — Fetching metadata for gskhw4w4lm (Facebook)
+2026-03-21 08:42:19,846 — INFO — ✅ Stats fetched for gskhw4w4lm
+2026-03-21 08:42:20,036 — INFO — ✅ Details fetched for gskhw4w4lm
+2026-03-21 08:42:20,039 — INFO — 💾 Metadata saved to data/raw/metadata/gskhw4w4lm/date=2026-03-21/metadata.json
+2026-03-21 08:42:20,039 — INFO — Title: Chris Face VSL The Gap Method Youtube  Paid Ads | Plays: 16692
+2026-03-21 08:42:20,039 — INFO — Fetching metadata for v08dlrgr7v (YouTube)
+2026-03-21 08:42:20,331 — INFO — ✅ Stats fetched for v08dlrgr7v
+2026-03-21 08:42:20,511 — INFO — ✅ Details fetched for v08dlrgr7v
+2026-03-21 08:42:20,514 — INFO — 💾 Metadata saved to data/raw/metadata/v08dlrgr7v/date=2026-03-21/metadata.json
+2026-03-21 08:42:20,514 — INFO — Title: Chris Face VSL The Gap Method Facebook Paid Ads | Plays: 43813
+2026-03-21 08:42:20,514 — INFO — Media metadata extraction finished!
+2026-03-21 08:42:20,514 — INFO — ==================================================
+2026-03-21 08:42:20,545 — INFO — ✅ src/ingestion/media_metadata.py completed successfully!
+2026-03-21 08:42:20,545 — INFO — Running src/ingestion/wistia_ingest.py...
+2026-03-21 08:42:20,644 — INFO — ==================================================
+2026-03-21 08:42:20,644 — INFO — Pipeline started
+2026-03-21 08:42:20,645 — INFO — Incremental run — fetching records since 2026-03-20T13:05:00.917659+00:00
+2026-03-21 08:42:20,645 — INFO — Fetching events for gskhw4w4lm
+2026-03-21 08:42:20,840 — INFO — Total records fetched for gskhw4w4lm: 0
+2026-03-21 08:42:20,841 — INFO — No new records to save for gskhw4w4lm
+2026-03-21 08:42:20,841 — INFO — Fetching events for v08dlrgr7v
+2026-03-21 08:42:21,194 — INFO — Total records fetched for v08dlrgr7v: 0
+2026-03-21 08:42:21,194 — INFO — No new records to save for v08dlrgr7v
+2026-03-21 08:42:21,195 — INFO — Watermark saved successfully!
+2026-03-21 08:42:21,195 — INFO — Pipeline finished successfully!
+2026-03-21 08:42:21,196 — INFO — ==================================================
+2026-03-21 08:42:21,227 — INFO — ✅ src/ingestion/wistia_ingest.py completed successfully!
+2026-03-21 08:42:21,227 — INFO — Running src/transformation/spark_transform.py...
+2026-03-21 08:42:32,370 — INFO — ✅ src/transformation/spark_transform.py completed successfully!
+2026-03-21 08:42:32,371 — INFO — Running src/quality_checks.py...
+2026-03-21 08:42:32,713 — INFO — ==================================================
+2026-03-21 08:42:32,713 — INFO — Running data quality checks...
+2026-03-21 08:42:32,985 — INFO — Running null checks...
+2026-03-21 08:42:32,986 — INFO — ✅ dim_media.media_id — no nulls
+2026-03-21 08:42:32,987 — INFO — ✅ dim_visitor.visitor_id — no nulls
+2026-03-21 08:42:32,988 — INFO — ✅ fact.media_id — no nulls
+2026-03-21 08:42:32,989 — INFO — ✅ fact.visitor_id — no nulls
+2026-03-21 08:42:32,990 — INFO — ✅ fact.date — no nulls
+2026-03-21 08:42:32,990 — INFO — Running uniqueness checks...
+2026-03-21 08:42:32,991 — INFO — ✅ dim_media.media_id — no duplicates
+2026-03-21 08:42:32,992 — INFO — ✅ dim_visitor.visitor_id — no duplicates
+2026-03-21 08:42:33,002 — INFO — ✅ fact composite key (media_id+visitor_id+date) — no duplicates
+2026-03-21 08:42:33,002 — INFO — Running schema checks...
+2026-03-21 08:42:33,002 — INFO — ✅ dim_media.media_id — column exists
+2026-03-21 08:42:33,002 — INFO — ✅ dim_media.channel — column exists
+2026-03-21 08:42:33,002 — INFO — ✅ dim_media.title — column exists
+2026-03-21 08:42:33,002 — INFO — ✅ dim_media.play_count — column exists
+2026-03-21 08:42:33,002 — INFO — ✅ dim_media.play_rate — column exists
+2026-03-21 08:42:33,002 — INFO — ✅ dim_visitor.visitor_id — column exists
+2026-03-21 08:42:33,002 — INFO — ✅ dim_visitor.ip_address — column exists
+2026-03-21 08:42:33,002 — INFO — ✅ dim_visitor.country — column exists
+2026-03-21 08:42:33,002 — INFO — ✅ fact.media_id — column exists
+2026-03-21 08:42:33,002 — INFO — ✅ fact.visitor_id — column exists
+2026-03-21 08:42:33,002 — INFO — ✅ fact.date — column exists
+2026-03-21 08:42:33,002 — INFO — ✅ fact.watched_percent — column exists
+2026-03-21 08:42:33,002 — INFO — Running row count checks...
+2026-03-21 08:42:33,002 — INFO — ✅ dim_media — 2 rows (expected 2)
+2026-03-21 08:42:33,002 — INFO — ✅ dim_visitor — 56,516 rows
+2026-03-21 08:42:33,002 — INFO — ✅ fact_media_engagement — 57,775 rows
+2026-03-21 08:42:33,002 — INFO — Running freshness check...
+2026-03-21 08:42:33,006 — INFO — ✅ Data freshness — latest record is 11 day(s) old
+2026-03-21 08:42:33,006 — INFO — ==================================================
+2026-03-21 08:42:33,006 — INFO — Quality check results: 24 passed · 0 failed
+2026-03-21 08:42:33,006 — INFO — ✅ All quality checks passed!
+2026-03-21 08:42:33,037 — INFO — ✅ src/quality_checks.py completed successfully!
+2026-03-21 08:42:33,037 — INFO — Syncing data to S3...
+2026-03-21 08:42:35,212 — INFO — ✅ Data synced to S3 successfully!
+2026-03-21 08:42:35,212 — INFO — ==================================================
+2026-03-21 08:42:35,212 — INFO — ✅ Pipeline finished successfully at 2026-03-21 13:42:35.212455+00:00
+2026-03-21 08:42:35,212 — INFO — ==================================================
